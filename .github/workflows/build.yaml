@@ -24,4 +24,8 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Build and push
+        run: |
+          docker build -t ${{ env.REGISTRY }}/${{ github.repository }}:latest -t ${{ env.REGISTRY }}/${{ github.repository }}:${{ github.sha }} .
+          docker push ${{ env.REGISTRY }}/${{ github.repository }}:latest -t ${{ env.REGISTRY }}/${{ github.repository }}:${{ github.sha }}
 
