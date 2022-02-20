@@ -26,7 +26,7 @@ jobs:
 
       - name: Build and push
         run: |
-          docker build -t ${{ env.REGISTRY }}/${{ github.repository }}:latest -t ${{ env.REGISTRY }}/${{ github.repository }}:${{ github.sha }} .
+          docker buildx build -t ${{ env.REGISTRY }}/${{ github.repository }}:latest -t ${{ env.REGISTRY }}/${{ github.repository }}:${{ github.sha }} --platform linux/arm64 .
           docker push ${{ env.REGISTRY }}/${{ github.repository }}:latest
           docker push ${{ env.REGISTRY }}/${{ github.repository }}:${{ github.sha }}
 
