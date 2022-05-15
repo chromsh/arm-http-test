@@ -42,7 +42,7 @@ jobs:
       #    docker push ${{ env.REGISTRY }}/${{ github.repository }}:latest
       #    docker push ${{ env.REGISTRY }}/${{ github.repository }}:${{ github.sha }}
 
-      - uses: docker/build-push-action@v2
+      - uses: docker/build-push-action@v3
         with:
           context: .
           file: Dockerfile
